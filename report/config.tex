@@ -1,0 +1,31 @@
+% Font and language
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{greek}
+\setotherlanguage{english}
+\setmainfont{Linux Libertine O}
+\newfontfamily\greekfont[Script=Greek]{Linux Libertine O}
+\newfontfamily\greekfontsf[Script=Greek]{Linux Libertine O}
+
+% Paper
+\usepackage[a4paper]{geometry}
+
+% Images
+\usepackage{graphicx}
+\graphicspath{\subfix{./images/}}
+
+% Links
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=black,
+	urlcolor=blue,
+}
+
+% Figure numbering
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+
+% Multifiles project
+\usepackage{subfiles}
