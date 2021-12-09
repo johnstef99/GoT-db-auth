@@ -14,39 +14,40 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class House extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $casts = [
-        'name' => 'string',
-        'slogan' => 'string',
-    ];
+  protected $casts = [
+    'name' => 'string',
+    'slogan' => 'string',
+  ];
 
-    /**
-     * @return BelongsTo
-     */
-    public function location(): BelongsTo
-    {
-        return $this->belongsTo(Location::class);
-    }
+  /**
+   * @return BelongsTo
+   */
+  public function location(): BelongsTo
+  {
+    return $this->belongsTo(Location::class);
+  }
 
-    /**
-     * @return HasOne
-     */
-    public function founder(): HasOne
-    {
-        return $this->hasOne(
-            Character::class,
-            'founder_character_id'
-        );
-    }
+  /**
+   * @return HasOne
+   */
+  public function founder(): HasOne
+  {
+    return $this->hasOne(
+      Character::class,
+      'id',
+      'founder_character_id',
+    );
+  }
 
-    /**
-     * @return HasMany
-     */
-    public function members(): HasMany
-    {
-        return $this->hasMany(
-            Character::class,
-        );
-    }
+  /**
+   * @return HasMany
+   */
+  public function members(): HasMany
+  {
+    return $this->hasMany(
+      Character::class,
+    );
+  }
 }

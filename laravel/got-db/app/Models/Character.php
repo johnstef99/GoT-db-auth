@@ -22,4 +22,9 @@ class Character extends Model
     {
         return $this->belongsTo(House::class);
     }
+
+    public function religion(): BelongsTo
+    {
+        return $this->belongsTo(Religion::class);
+    }
 }

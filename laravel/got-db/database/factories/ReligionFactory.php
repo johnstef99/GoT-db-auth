@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class HouseFactory extends Factory
+class ReligionFactory extends Factory
 {
   /**
    * Define the model's default state.
@@ -15,9 +14,7 @@ class HouseFactory extends Factory
   public function definition()
   {
     return [
-      'name' => $this->faker->country(),
-      'slogan' => $this->faker->sentence(),
-      'location_id' => Location::factory(),
+      'name' => $this->faker->word(),
     ];
   }
 }

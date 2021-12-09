@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\House;
+use App\Models\Character;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCharactersTable extends Migration
+class CreateReligionsTable extends Migration
 {
   /**
    * Run the migrations.
@@ -14,11 +14,10 @@ class CreateCharactersTable extends Migration
    */
   public function up()
   {
-    Schema::create('characters', function (Blueprint $table) {
+    Schema::create('religions', function (Blueprint $table) {
       $table->id();
-      $table->foreignIdFor(House::class)->nullable()->constrained('houses');
+      $table->foreignIdFor(Character::class, 'leader_character_id')->nullable()->constrained('characters');
       $table->string('name');
-      $table->dateTime('birthday');
       $table->timestamps();
     });
   }
@@ -30,6 +29,6 @@ class CreateCharactersTable extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('characters');
+    Schema::dropIfExists('religions');
   }
 }
