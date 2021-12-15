@@ -21,29 +21,19 @@ class House extends Model
     'slogan' => 'string',
   ];
 
-  /**
-   * @return BelongsTo
-   */
   public function location(): BelongsTo
   {
     return $this->belongsTo(Location::class);
   }
 
-  /**
-   * @return HasOne
-   */
-  public function founder(): HasOne
+  public function founder(): BelongsTo
   {
-    return $this->hasOne(
+    return $this->belongsTo(
       Character::class,
-      'id',
       'founder_character_id',
     );
   }
 
-  /**
-   * @return HasMany
-   */
   public function members(): HasMany
   {
     return $this->hasMany(
