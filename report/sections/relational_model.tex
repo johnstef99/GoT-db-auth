@@ -1,0 +1,90 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+
+\begin{document}
+
+\subsection{Πεδία Ορισμού}
+
+\renewcommand{\arraystretch}{1.5}
+\tymin 0.3\textwidth
+\begin{table}[H]
+	\centering
+	\begin{tabulary}{\textwidth}{L|C}
+		\hline
+		\textbf{Πεδίο ορισμού}       & \textbf{Τύπος} \\
+		\hline
+		ταυτότητα              &   INT(4)  \\
+		ημερομηνία             &   DATE()  \\
+		όνομα                  &   VARCHAR(25)  \\
+		αλφαριθμητικό          &   VARCHAR(25)  \\
+		προσδιορισμός          &   ENUM()  \\
+		συντεταγμένες          &   REAL()  \\
+		\hline
+	\end{tabulary}
+	\caption{Πεδία ορισμού της βάσης got-db}
+	\label{tab:scopes}
+\end{table}
+
+
+\newenvironment{relation}[1]
+{\renewcommand{\arraystretch}{1.4}
+	\newcommand{\temp}{#1}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}[t]{l|c}
+			\hline
+			\multicolumn{2}{c}{Σχέση: \textbf{#1}}  \\
+			\hline
+			\hline
+			\multicolumn{2}{c}{\textbf{Γνωρίσματα}} \\
+			\hline
+			\textbf{Όνομα} & \textbf{Τύπος}         \\
+			}
+			{
+		\end{tabular}
+		\caption{Πίνακας σχέσης \texttt{\temp}}
+	\end{table}
+}
+
+\subsection{Σχέσεις}
+
+\begin{relation}{Character}
+	character\_ID         &  ταυτότητα \\
+	name                  &  όνομα \\
+	alias                 &  προσδιορισμός \\
+	date\_of\_birth       &  ημερομηνία \\
+	date\_of\_death       &  ημερομηνία \\
+	titles                &  αλφαριθμητικό \\
+\end{relation}
+
+\begin{relation}{house}
+	slogan                &  αλφαριθμητικό\\
+	house\_name           &  όνομα \\
+\end{relation}
+
+\begin{relation}{non human}
+  ID                &  ταυτότητα \\
+  name              &  όνομα \\
+  species           &  αλφαριθμητικό \\
+\end{relation}
+
+\begin{relation}{notable events}
+  date              & ημερομηνία \\
+  nickname          & όνομα \\
+  Type\_of\_event   & προσδιορισμός \\
+  outcome           & προσδιορισμός \\
+\end{relation}
+
+\begin{relation}{religion}
+  name & όνομα \\
+\end{relation}
+
+\begin{relation}{location}
+  x     & συντεταγμένες \\
+  y     & συντεταγμένες \\
+  name  & όνομα \\
+\end{relation}
+
+\subsection{Σχεσιακό Σχήμα}
+
+\end{document}
