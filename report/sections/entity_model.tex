@@ -35,8 +35,7 @@
 			\textbf{Γνωρίσματα} & #4  \\
 			\hline
 		\end{tabulary}
-		\caption{Πίνακας οντότητας #1}
-		\label{tab:entity_#1}
+		\caption{Οντότητα #1}
 	\end{table}
 }
 
@@ -57,9 +56,7 @@
 			\textbf{Γνωρίσματα}           & #6  \\
 			\hline
 		\end{tabulary}
-		\StrSubstitute{#1}{\_}{-}[\temp]
-		\caption{Πίνακας συσχέτισης \texttt{#1}}
-		\label{tab:relation_\temp}
+		\caption{Συσχέτιση \texttt{#1}}
 	\end{table}
 }
 
@@ -73,14 +70,14 @@
 \entityTable{house}
 {Οντότητα που αποθηκεύονται οι οίκοι}
 {Ισχυρή Οντότητα}
-{house\_name, slogan, locations}
+{house\_name, slogan, location}
 
-\entityTable{non/_human}
+\entityTable{non\_human}
 {Οντότητα που αποθηκεύονται τα μη ανθρώπινα έμβια πλάσματα}
 {Ισχυρή Οντότητα, Υποκλάσεις: Beast, Plants}
 {name, species, ID}
 
-\entityTable{notable_events}
+\entityTable{notable\_events}
 {Οντότητα που αποθηκεύονται τα σημαντικά γεγονότα}
 {Ισχυρή Οντότητα}
 {nickname, date, locations, type\_of\_event, outcome}
@@ -140,7 +137,7 @@
 
 \relationTable{Notable\_event\_happened\_in\_location}
 {Κάθε σημαντικό γεγονός πρέπει να έχει συβεί σε μία τοποθεσία}
-{happened_in: δυαδική}
+{happened\_in: δυαδική}
 {Ν:1}
 {Μερική συμμετοχή του location \newline Ολική συμμετοχή του notable\_events}
 {}
@@ -152,14 +149,14 @@
 {Μερική συμμετοχή του location \newline Ολική συμμετοχή του House}
 {}
 
-\relationTable{character_owns_non_human}
+\relationTable{character\_owns\_non\_human}
 {Κάθε χαρακτήρας μπορεί να έχει έμβυα πλάσματα στην κατοχή του. }
 {owns\_a: δυαδική}
 {N:M}
 {Μερική Συμμετοχή του Character \newline Μερική Συμμετοχή του Non human}
 {}
 
-\relationTable{character_has_religion}
+\relationTable{character\_has\_religion}
 {Κάθε χαρακτήρας μπορεί να έχει μία ή και παραπάνω θρησκείες.}
 {owns\_a: δυαδική}
 {N:M}
