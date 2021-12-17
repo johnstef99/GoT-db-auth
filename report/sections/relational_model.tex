@@ -29,18 +29,19 @@
 \newenvironment{relation}[1]
 {\renewcommand{\arraystretch}{1.4}
 	\newcommand{\temp}{#1}
+  \newcolumntype{C}{>{\centering\arraybackslash}p{0.3\textwidth}}
 	\begin{table}[H]
 		\centering
-		\begin{tabular}[t]{l|c}
+		\begin{tabular}[t]{*{2}{C}}
 			\hline
-			\multicolumn{2}{c}{Σχέση: \textbf{#1}}  \\
+			\multicolumn{2}{c}{Όνομα Σχέσης: \bf{#1}}  \\
 			\hline
-			\hline
-			\multicolumn{2}{c}{\textbf{Γνωρίσματα}} \\
+			\multicolumn{2}{c}{\bf{Γνωρίσματα}} \\
 			\hline
 			\textbf{Όνομα} & \textbf{Τύπος}         \\
 			}
 			{
+			\hline
 		\end{tabular}
 		\caption{Πίνακας σχέσης \texttt{\temp}}
 	\end{table}
@@ -48,8 +49,8 @@
 
 \subsection{Σχέσεις}
 
-\begin{relation}{Character}
-	character\_ID         &  ταυτότητα \\
+\begin{relation}{character}
+	character\_id         &  ταυτότητα\\
 	name                  &  όνομα \\
 	alias                 &  προσδιορισμός \\
 	date\_of\_birth       &  ημερομηνία \\
