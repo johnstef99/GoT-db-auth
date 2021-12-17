@@ -2,6 +2,7 @@
 \graphicspath{{\subfix{../images/}}}
 
 \begin{document}
+\newcolumntype{C}{>{\centering\arraybackslash}p{0.3\textwidth}}
 
 \subsection{Πεδία Ορισμού}
 
@@ -9,41 +10,40 @@
 \tymin 0.3\textwidth
 \begin{table}[H]
 	\centering
-	\begin{tabulary}{\textwidth}{L|C}
+	\begin{tabular}{C|C}
 		\hline
-		\textbf{Πεδίο ορισμού}       & \textbf{Τύπος} \\
+		\textbf{Πεδίο ορισμού} & \textbf{Τύπος} \\
 		\hline
-		ταυτότητα              &   INT(4)  \\
-		ημερομηνία             &   DATE()  \\
-		όνομα                  &   VARCHAR(25)  \\
-		αλφαριθμητικό          &   VARCHAR(25)  \\
-		προσδιορισμός          &   ENUM()  \\
-		συντεταγμένες          &   REAL()  \\
+		ταυτότητα              & INT(4)         \\
+		ημερομηνία             & DATE()         \\
+		όνομα                  & VARCHAR(25)    \\
+		αλφαριθμητικό          & VARCHAR(25)    \\
+		προσδιορισμός          & ENUM()         \\
+		συντεταγμένες          & REAL()         \\
 		\hline
-	\end{tabulary}
+	\end{tabular}
 	\caption{Πεδία ορισμού της βάσης got-db}
 \end{table}
 
 
 \newenvironment{relation}[1]
 {\renewcommand{\arraystretch}{1.4}
-\newcommand{\temp}{#1}
-\newcolumntype{C}{>{\centering\arraybackslash}p{0.3\textwidth}}
-\begin{table}[H]
-	\centering
-	\begin{tabular}[t]{*{2}{C}}
-		\hline
-		\multicolumn{2}{c}{Όνομα Σχέσης: \bf{#1}} \\
-		\hline
-		\multicolumn{2}{c}{\bf{Γνωρίσματα}}       \\
-		\hline
-		\textbf{Όνομα} & \textbf{Τύπος}           \\
-		}
-		{
-		\hline
-	\end{tabular}
-	\caption{Πίνακας σχέσης \texttt{\temp}}
-\end{table}
+	\newcommand{\temp}{#1}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}[t]{*{2}{C}}
+			\hline
+			\multicolumn{2}{c}{Όνομα Σχέσης: \bf{#1}} \\
+			\hline
+			\multicolumn{2}{c}{\bf{Γνωρίσματα}}       \\
+			\hline
+			\textbf{Όνομα} & \textbf{Τύπος}           \\
+			}
+			{
+			\hline
+		\end{tabular}
+		\caption{Πίνακας σχέσης \texttt{\temp}}
+	\end{table}
 }
 
 \subsection{Σχέσεις}
@@ -95,7 +95,7 @@
 \subsection{Όψεις}
 
 % command for smaller subscripts
-\newcommand{\tsub}[1]{\tiny\texttt{#1}}
+\newcommand{\tsub}[1]{\texttt{\tiny#1}}
 
 Όψη που περιέχει όλους τους ηγέτες Θρησκειών.
 \begin{equation}
