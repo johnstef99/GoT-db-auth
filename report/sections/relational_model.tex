@@ -22,29 +22,28 @@
 		\hline
 	\end{tabulary}
 	\caption{Πεδία ορισμού της βάσης got-db}
-	\label{tab:scopes}
 \end{table}
 
 
 \newenvironment{relation}[1]
 {\renewcommand{\arraystretch}{1.4}
-	\newcommand{\temp}{#1}
-  \newcolumntype{C}{>{\centering\arraybackslash}p{0.3\textwidth}}
-	\begin{table}[H]
-		\centering
-		\begin{tabular}[t]{*{2}{C}}
-			\hline
-			\multicolumn{2}{c}{Όνομα Σχέσης: \bf{#1}}  \\
-			\hline
-			\multicolumn{2}{c}{\bf{Γνωρίσματα}} \\
-			\hline
-			\textbf{Όνομα} & \textbf{Τύπος}         \\
-			}
-			{
-			\hline
-		\end{tabular}
-		\caption{Πίνακας σχέσης \texttt{\temp}}
-	\end{table}
+\newcommand{\temp}{#1}
+\newcolumntype{C}{>{\centering\arraybackslash}p{0.3\textwidth}}
+\begin{table}[H]
+	\centering
+	\begin{tabular}[t]{*{2}{C}}
+		\hline
+		\multicolumn{2}{c}{Όνομα Σχέσης: \bf{#1}} \\
+		\hline
+		\multicolumn{2}{c}{\bf{Γνωρίσματα}}       \\
+		\hline
+		\textbf{Όνομα} & \textbf{Τύπος}           \\
+		}
+		{
+		\hline
+	\end{tabular}
+	\caption{Πίνακας σχέσης \texttt{\temp}}
+\end{table}
 }
 
 \subsection{Σχέσεις}
@@ -92,5 +91,21 @@
 	\includegraphics[width=\textwidth]{../images/relation_diagram.png}
 	\caption{Σχεσιακό Σχήμα}
 \end{figure}
+
+\subsection{Όψεις}
+
+% command for smaller subscripts
+\newcommand{\tsub}[1]{\tiny\texttt{#1}}
+
+Όψη που περιέχει όλους τους ηγέτες Θρησκειών.
+\begin{equation}
+	\bm{\rho}_{\tsub{LEADERS}}
+	(
+	\bm{\pi}_{\tsub{name,name}} (
+	\bm{\pi}_{\tsub{leader\_id,name}}(\texttt{religion})
+	\bowtie
+	\bm{\pi}_{\tsub{id,name}}(\texttt{character})
+	))
+\end{equation}
 
 \end{document}
