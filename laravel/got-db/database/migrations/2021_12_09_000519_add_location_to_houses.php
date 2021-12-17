@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeysToHouses extends Migration
+class AddLocationToHouses extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,6 @@ class AddForeignKeysToHouses extends Migration
     public function up()
     {
         Schema::table('houses', function (Blueprint $table) {
-            $table->foreignIdFor(Character::class, 'founder_character_id')->nullable()->constrained('characters');
             $table->foreignIdFor(Location::class)->constrained('locations');
         });
     }

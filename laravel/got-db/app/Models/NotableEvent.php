@@ -14,4 +14,9 @@ class NotableEvent extends Model
   {
     return $this->belongsToMany(Location::class, 'location_notable_event');
   }
+
+  public function participants(): BelongsToMany
+  {
+    return $this->belongsToMany(Character::class, 'character_event');
+  }
 }

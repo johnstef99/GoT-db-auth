@@ -16,7 +16,6 @@ class CreateReligionsTable extends Migration
   {
     Schema::create('religions', function (Blueprint $table) {
       $table->id();
-      $table->foreignIdFor(Character::class, 'leader_character_id')->nullable()->constrained('characters');
       $table->string('name');
       $table->timestamps();
     });

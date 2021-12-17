@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\CharacterTitles;
 use App\Models\House;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,7 +19,9 @@ class CreateCharactersTable extends Migration
       $table->id();
       $table->foreignIdFor(House::class)->nullable()->constrained('houses');
       $table->string('name');
-      $table->dateTime('birthday');
+      $table->date('date_of_birth')->nullable();
+      $table->date('date_of_death')->nullable();
+      $table->boolean('house_leader')->default(false);
       $table->timestamps();
     });
   }

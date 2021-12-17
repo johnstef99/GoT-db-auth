@@ -17,7 +17,7 @@ class CreateNotableEventsTable extends Migration
     Schema::create('notable_events', function (Blueprint $table) {
       $table->id();
       $table->string('name');
-      $table->enum('event_type', NotableEventType::getKeys());
+      $table->enum('type', NotableEventType::getKeys());
       $table->date('date');
       $table->text('description');
       $table->timestamps();

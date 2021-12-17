@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+* @property String $name
+* @property float $x
+* @property float $y
+*/
 class Location extends Model
 {
   use HasFactory;

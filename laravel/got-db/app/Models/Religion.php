@@ -7,18 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+* @property String $name
+*/
 class Religion extends Model
 {
   use HasFactory;
-
-  public function leader(): HasOne
-  {
-    return $this->hasOne(
-      Character::class,
-      'id',
-      'leader_character_id'
-    );
-  }
 
   public function members(): HasMany
   {
