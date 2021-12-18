@@ -47,7 +47,7 @@
 		\centering
 		\begin{tabulary}{\textwidth}{R|L}
 			\hline
-			\multicolumn{2}{c}{Οντότητα: \textbf{#1}} \\
+			\multicolumn{2}{c}{Συσχέτιση: \textbf{#1}} \\
 			\hline
 			\textbf{Περιγραφή}            & #2  \\
 			\textbf{Ιδιότητες}            & #3  \\
@@ -102,9 +102,6 @@
 {Ισχυρή Οντότητα}
 {name, x, y}
 
-% TODO: fill the rest
-
-
 \subsection{Καθορισμός Συσχετίσεων}
 
 \relationTable{character\_belongs\_to\_house}
@@ -112,79 +109,70 @@
 {belongs-to: διαδική}
 {N:1}
 {Μερική Συμμετοχή του Character \newline Ολική συμμετοχή του House}
-{rank}
+{-}
 
 \relationTable{Friends}
 {Κάθε χαρακτήρας μπορεί να έχει έναν φίλο ο οποίος είναι πάλι character}
 {Αναδρομική-recursive}
 {N:M}
 {Ολική συμμετοχή του character}
-{}
+{-}
 
 \relationTable{Relatives}
 {Κάθε χαρακτήρας μπορεί να έχει έναν συγγενή ο οποίος είναι πάλι character}
 {Αναδρομική-recursive}
 {N:M}
 {Ολική συμμετοχή του character}
-{}
+{-}
 
 \relationTable{house\_leadership\_character}
 {Κάθε οίκος πρέπει να έχει κάποια ηγεσία}
 {leadership: δυαδική}
 {1:Ν}
 {Ολική συμμετοχή του house \newline Μερική συμμετοχή του character}
-{}
+{-}
 
 \relationTable{Notable\_event\_happened\_in\_location}
 {Κάθε σημαντικό γεγονός πρέπει να έχει συβεί σε μία τοποθεσία}
 {happened\_in: δυαδική}
 {Ν:1}
 {Μερική συμμετοχή του location \newline Ολική συμμετοχή του notable\_events}
-{}
+{-}
 
 \relationTable{House\_is\_at\_location}
 {Κάθε οίκος πρέπει να είναι σε κάποια τοποθεσία}
 {is\_at: δυαδική}
 {1:1}
 {Μερική συμμετοχή του location \newline Ολική συμμετοχή του House}
-{}
+{-}
 
 \relationTable{character\_owns\_non\_human}
 {Κάθε χαρακτήρας μπορεί να έχει έμβυα πλάσματα στην κατοχή του. }
 {owns\_a: δυαδική}
 {N:M}
 {Μερική Συμμετοχή του Character \newline Μερική Συμμετοχή του Non human}
-{}
+{-}
 
 \relationTable{character\_has\_religion}
 {Κάθε χαρακτήρας μπορεί να έχει μία ή και παραπάνω θρησκείες.}
 {owns\_a: δυαδική}
 {N:M}
 {Μερική Συμμετοχή του Character \newline Μερική Συμμετοχή του Non human}
-{}
+{-}
 
 \relationTable{character\_participates\_in\_notable\_events}
 {Κάθε χαρακτήρας μπορεί να συμμετεχει σε ένα σημαντικό γεγονός.}
 {participates\_in: δυαδική}
 {N:M}
 {Μερική Συμμετοχή του Character \newline Ολική Συμμετοχή του notable events}
-{}
+{-}
 
 \relationTable{Non\_human\_is\_a\_beast/plant}
 {Κάθε non human μπορεί να είναι είτε ζωώδες πλάσα είτε φυτό.}
 {is\_a: προσδιορίζουσα }
 {1:1}
 {Ολική συμμετοχή του Non\_human \newline Ολική Συμμετοχή του beast/plant }
-{}
-
-
-
-
-
-
-
-
-% TODO: fill the rest
+{-}
 
 \subsection{Διάγραμμα Οντοτήτων/Συσχετίσεων}
 
