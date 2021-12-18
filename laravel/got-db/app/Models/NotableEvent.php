@@ -2,10 +2,18 @@
 
 namespace App\Models;
 
+use App\Enums\NotableEventType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * @property int id
+ * @property String name
+ * @property NotableEventType type
+ * @property Carbon date
+ * @property String description
+ */
 class NotableEvent extends Model
 {
   use HasFactory;
@@ -17,6 +25,6 @@ class NotableEvent extends Model
 
   public function participants(): BelongsToMany
   {
-    return $this->belongsToMany(Character::class, 'character_event');
+    return $this->belongsToMany(Character::class, 'character_notable_event');
   }
 }

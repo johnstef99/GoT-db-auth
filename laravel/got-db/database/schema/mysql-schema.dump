@@ -16,22 +16,6 @@ CREATE TABLE `assigned_character_titles` (
   CONSTRAINT `assigned_character_titles_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `character_event`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `character_event` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `character_id` bigint(20) unsigned NOT NULL,
-  `notable_event_id` bigint(20) unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `character_event_character_id_foreign` (`character_id`),
-  KEY `character_event_notable_event_id_foreign` (`notable_event_id`),
-  CONSTRAINT `character_event_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`),
-  CONSTRAINT `character_event_notable_event_id_foreign` FOREIGN KEY (`notable_event_id`) REFERENCES `notable_events` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `character_friends`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -64,6 +48,22 @@ CREATE TABLE `character_non_human` (
   KEY `character_non_human_non_human_id_foreign` (`non_human_id`),
   CONSTRAINT `character_non_human_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`),
   CONSTRAINT `character_non_human_non_human_id_foreign` FOREIGN KEY (`non_human_id`) REFERENCES `non_humans` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `character_notable_event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `character_notable_event` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `character_id` bigint(20) unsigned NOT NULL,
+  `notable_event_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `character_notable_event_character_id_foreign` (`character_id`),
+  KEY `character_notable_event_notable_event_id_foreign` (`notable_event_id`),
+  CONSTRAINT `character_notable_event_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`),
+  CONSTRAINT `character_notable_event_notable_event_id_foreign` FOREIGN KEY (`notable_event_id`) REFERENCES `notable_events` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `character_relatives`;
@@ -286,7 +286,7 @@ INSERT INTO `migrations` VALUES (11,'2021_12_15_212305_add_locations_to_notable_
 INSERT INTO `migrations` VALUES (12,'2021_12_15_220315_create_relatives_table',1);
 INSERT INTO `migrations` VALUES (13,'2021_12_15_221112_create_friends_table',1);
 INSERT INTO `migrations` VALUES (14,'2021_12_17_181321_create_character_religion_table',1);
-INSERT INTO `migrations` VALUES (15,'2021_12_17_184326_create_character_event_table',1);
-INSERT INTO `migrations` VALUES (16,'2021_12_17_205504_create_table_to_store_character_titles',1);
-INSERT INTO `migrations` VALUES (17,'2021_12_17_232013_create_non_humans_table',1);
-INSERT INTO `migrations` VALUES (18,'2021_12_17_233139_create_table_for_non_human_ownership',1);
+INSERT INTO `migrations` VALUES (15,'2021_12_17_205504_create_table_to_store_character_titles',1);
+INSERT INTO `migrations` VALUES (16,'2021_12_17_232013_create_non_humans_table',1);
+INSERT INTO `migrations` VALUES (17,'2021_12_17_233139_create_table_for_non_human_ownership',1);
+INSERT INTO `migrations` VALUES (18,'2021_12_18_210639_many_to_many_character_notable_event',1);

@@ -22,43 +22,42 @@ use Illuminate\Support\Facades\DB;
  */
 class Character extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    public function house(): BelongsTo
-    {
-        return $this->belongsTo(House::class);
-    }
+  public function house(): BelongsTo
+  {
+    return $this->belongsTo(House::class);
+  }
 
-    public function religions(): BelongsToMany
-    {
-        return $this->belongsToMany(Religion::class);
-    }
+  public function religions(): BelongsToMany
+  {
+    return $this->belongsToMany(Religion::class);
+  }
 
-    public function relatives(): BelongsToMany
-    {
-        return $this->belongsToMany(Character::class, 'character_relatives', 'left_id', 'right_id');
-    }
+  public function relatives(): BelongsToMany
+  {
+    return $this->belongsToMany(Character::class, 'character_relatives', 'left_id', 'right_id');
+  }
 
-    public function friends(): BelongsToMany
-    {
-        return $this->belongsToMany(Character::class, 'character_friends', 'left_id', 'right_id');
-    }
+  public function friends(): BelongsToMany
+  {
+    return $this->belongsToMany(Character::class, 'character_friends', 'left_id', 'right_id');
+  }
 
-    public function events(): BelongsToMany
-    {
-        return $this->belongsToMany(NotableEvent::class, 'character_event');
-    }
+  public function events(): BelongsToMany
+  {
+    return $this->belongsToMany(NotableEvent::class, 'character_notable_event');
+  }
 
-    public function titles(): HasMany
-    {
-        return $this->hasMany(
-            CharacterTitle::class,
-        );
-    }
+  public function titles(): HasMany
+  {
+    return $this->hasMany(
+      CharacterTitle::class,
+    );
+  }
 
-    public function owns(): BelongsToMany
-    {
-        return $this->belongsToMany(NonHuman::class);
-    }
-
+  public function owns(): BelongsToMany
+  {
+    return $this->belongsToMany(NonHuman::class);
+  }
 }

@@ -3,24 +3,25 @@
 namespace Database\Factories;
 
 use App\Models\House;
-use App\Models\Religion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CharacterFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
-    public function definition()
-    {
-        return [
-            'name' => $this->faker->name(),
-            'date_of_birth' => $this->faker->dateTime(),
-            'date_of_death' => $this->faker->dateTime(),
-            'house_id' => House::factory(),
-            'house_leader' => false,
-        ];
-    }
+  /**
+   * Define the model's default state.
+   *
+   * @return array
+   */
+  public function definition()
+  {
+    $death = $this->faker->date();
+    $birth = $this->faker->date('Y-m-d', $death);
+    return [
+      'name' => $this->faker->name(),
+      'date_of_birth' => $birth,
+      'date_of_death' => $death,
+      'house_id' => House::factory(),
+      'house_leader' => false,
+    ];
+  }
 }
