@@ -26,4 +26,25 @@
 \section{Παραδείγματα}
 \subfile{sections/examples}
 
+
+\section{Σημειώσεις}
+Τον κώδικα όλου του πρότζεκτ μπορείτε να τον βρείτε στο \href{https://github.com/johnstef99/GoT-db-auth}{github}.
+Το mysql-workbench model έγινε μετά από reverse engineer του schema που φτιάξαμε
+μέσω του Laravel framework. Για αυτόν τον λόγο θα βρείτε σε κάθε table τα
+columns \verb|created_at, updated_at| που είναι τα λεγόμενα timestamps του
+Laravel.
+
+Τα views στην βάση δημιουργήθηκαν "με το χέρι", δηλαδή δεν βρίσκονται μέσα στο
+Laravel project. Το SQL script για την δημιουργία τους υπάρχει μέσα στο dump της
+gotdb.
+
+\begin{figure}[H]
+	\centering
+	\begin{tabular}{l l}
+		\textbf{Database}: & \verb|mariadb 15.1 Distrib 10.6.5-MariaDB| \\
+		\textbf{PHP}:      & \verb|PHP 7.4.26|
+	\end{tabular}
+	\caption{Λογισμικό που χρησιμοποιήθηκε}
+\end{figure}
+
 \end{document}
