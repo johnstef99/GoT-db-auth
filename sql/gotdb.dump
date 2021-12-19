@@ -1,0 +1,658 @@
+-- MariaDB dump 10.19  Distrib 10.6.5-MariaDB, for Linux (x86_64)
+--
+-- Host: localhost    Database: gotdb
+-- ------------------------------------------------------
+-- Server version	10.6.5-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `assigned_character_titles`
+--
+
+DROP TABLE IF EXISTS `assigned_character_titles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `assigned_character_titles` (
+  `character_id` bigint(20) unsigned NOT NULL,
+  `title` enum('HandOfKink','Warden','Khaleesi','KingOfNorth','LordCommander') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`character_id`,`title`),
+  CONSTRAINT `assigned_character_titles_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `assigned_character_titles`
+--
+
+LOCK TABLES `assigned_character_titles` WRITE;
+/*!40000 ALTER TABLE `assigned_character_titles` DISABLE KEYS */;
+INSERT INTO `assigned_character_titles` VALUES (5,'Khaleesi','2021-12-19 15:16:05','2021-12-19 15:16:05'),(10,'LordCommander','2021-12-19 15:16:05','2021-12-19 15:16:05'),(15,'Khaleesi','2021-12-19 15:16:05','2021-12-19 15:16:05'),(20,'Khaleesi','2021-12-19 15:16:05','2021-12-19 15:16:05'),(25,'LordCommander','2021-12-19 15:16:06','2021-12-19 15:16:06'),(30,'HandOfKink','2021-12-19 15:16:06','2021-12-19 15:16:06');
+/*!40000 ALTER TABLE `assigned_character_titles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `character_friends`
+--
+
+DROP TABLE IF EXISTS `character_friends`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `character_friends` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `left_id` bigint(20) unsigned NOT NULL,
+  `right_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `character_friends_left_id_foreign` (`left_id`),
+  KEY `character_friends_right_id_foreign` (`right_id`),
+  CONSTRAINT `character_friends_left_id_foreign` FOREIGN KEY (`left_id`) REFERENCES `characters` (`id`),
+  CONSTRAINT `character_friends_right_id_foreign` FOREIGN KEY (`right_id`) REFERENCES `characters` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `character_friends`
+--
+
+LOCK TABLES `character_friends` WRITE;
+/*!40000 ALTER TABLE `character_friends` DISABLE KEYS */;
+INSERT INTO `character_friends` VALUES (1,1,2,NULL,NULL),(2,1,6,NULL,NULL),(3,1,10,NULL,NULL),(4,2,1,NULL,NULL),(5,2,6,NULL,NULL),(6,2,10,NULL,NULL),(7,3,1,NULL,NULL),(8,3,6,NULL,NULL),(9,3,7,NULL,NULL),(10,4,3,NULL,NULL),(11,4,7,NULL,NULL),(12,4,8,NULL,NULL),(13,5,4,NULL,NULL),(14,5,9,NULL,NULL),(15,5,10,NULL,NULL),(16,6,1,NULL,NULL),(17,6,3,NULL,NULL),(18,6,7,NULL,NULL),(19,7,2,NULL,NULL),(20,7,5,NULL,NULL),(21,7,8,NULL,NULL),(22,8,4,NULL,NULL),(23,8,6,NULL,NULL),(24,8,9,NULL,NULL),(25,9,2,NULL,NULL),(26,9,6,NULL,NULL),(27,9,7,NULL,NULL),(28,10,2,NULL,NULL),(29,10,3,NULL,NULL),(30,10,6,NULL,NULL),(31,11,13,NULL,NULL),(32,11,15,NULL,NULL),(33,11,16,NULL,NULL),(34,12,15,NULL,NULL),(35,12,16,NULL,NULL),(36,12,17,NULL,NULL),(37,13,11,NULL,NULL),(38,13,17,NULL,NULL),(39,13,20,NULL,NULL),(40,14,11,NULL,NULL),(41,14,12,NULL,NULL),(42,14,20,NULL,NULL),(43,15,13,NULL,NULL),(44,15,17,NULL,NULL),(45,15,18,NULL,NULL),(46,16,15,NULL,NULL),(47,16,18,NULL,NULL),(48,16,20,NULL,NULL),(49,17,12,NULL,NULL),(50,17,18,NULL,NULL),(51,17,19,NULL,NULL),(52,18,13,NULL,NULL),(53,18,16,NULL,NULL),(54,18,20,NULL,NULL),(55,19,13,NULL,NULL),(56,19,15,NULL,NULL),(57,19,20,NULL,NULL),(58,20,11,NULL,NULL),(59,20,12,NULL,NULL),(60,20,18,NULL,NULL),(61,21,24,NULL,NULL),(62,21,26,NULL,NULL),(63,21,27,NULL,NULL),(64,22,25,NULL,NULL),(65,22,27,NULL,NULL),(66,22,30,NULL,NULL),(67,23,25,NULL,NULL),(68,23,26,NULL,NULL),(69,23,27,NULL,NULL),(70,24,22,NULL,NULL),(71,24,23,NULL,NULL),(72,24,29,NULL,NULL),(73,25,21,NULL,NULL),(74,25,23,NULL,NULL),(75,25,29,NULL,NULL),(76,26,24,NULL,NULL),(77,26,25,NULL,NULL),(78,26,27,NULL,NULL),(79,27,25,NULL,NULL),(80,27,26,NULL,NULL),(81,27,29,NULL,NULL),(82,28,24,NULL,NULL),(83,28,27,NULL,NULL),(84,28,29,NULL,NULL),(85,29,23,NULL,NULL),(86,29,26,NULL,NULL),(87,29,28,NULL,NULL),(88,30,21,NULL,NULL),(89,30,23,NULL,NULL),(90,30,29,NULL,NULL);
+/*!40000 ALTER TABLE `character_friends` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `character_non_human`
+--
+
+DROP TABLE IF EXISTS `character_non_human`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `character_non_human` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `character_id` bigint(20) unsigned NOT NULL,
+  `non_human_id` bigint(20) unsigned NOT NULL,
+  `from_year` year(4) DEFAULT NULL,
+  `to_year` year(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `character_non_human_character_id_foreign` (`character_id`),
+  KEY `character_non_human_non_human_id_foreign` (`non_human_id`),
+  CONSTRAINT `character_non_human_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`),
+  CONSTRAINT `character_non_human_non_human_id_foreign` FOREIGN KEY (`non_human_id`) REFERENCES `non_humans` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `character_non_human`
+--
+
+LOCK TABLES `character_non_human` WRITE;
+/*!40000 ALTER TABLE `character_non_human` DISABLE KEYS */;
+INSERT INTO `character_non_human` VALUES (1,2,51,NULL,NULL,NULL,NULL),(2,4,52,NULL,NULL,NULL,NULL),(3,6,53,NULL,NULL,NULL,NULL),(4,8,54,NULL,NULL,NULL,NULL),(5,10,55,NULL,NULL,NULL,NULL),(6,12,56,NULL,NULL,NULL,NULL),(7,14,57,NULL,NULL,NULL,NULL),(8,16,58,NULL,NULL,NULL,NULL),(9,18,59,NULL,NULL,NULL,NULL),(10,20,60,NULL,NULL,NULL,NULL),(11,22,61,NULL,NULL,NULL,NULL),(12,24,62,NULL,NULL,NULL,NULL),(13,26,63,NULL,NULL,NULL,NULL),(14,28,64,NULL,NULL,NULL,NULL),(15,30,65,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `character_non_human` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `character_notable_event`
+--
+
+DROP TABLE IF EXISTS `character_notable_event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `character_notable_event` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `character_id` bigint(20) unsigned NOT NULL,
+  `notable_event_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `character_notable_event_character_id_foreign` (`character_id`),
+  KEY `character_notable_event_notable_event_id_foreign` (`notable_event_id`),
+  CONSTRAINT `character_notable_event_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`),
+  CONSTRAINT `character_notable_event_notable_event_id_foreign` FOREIGN KEY (`notable_event_id`) REFERENCES `notable_events` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `character_notable_event`
+--
+
+LOCK TABLES `character_notable_event` WRITE;
+/*!40000 ALTER TABLE `character_notable_event` DISABLE KEYS */;
+INSERT INTO `character_notable_event` VALUES (1,1,1,NULL,NULL),(2,2,1,NULL,NULL),(3,3,1,NULL,NULL),(4,5,1,NULL,NULL),(5,6,1,NULL,NULL),(6,8,1,NULL,NULL),(7,9,1,NULL,NULL),(8,10,1,NULL,NULL),(9,16,1,NULL,NULL),(10,18,1,NULL,NULL),(11,19,1,NULL,NULL),(12,25,1,NULL,NULL),(13,26,1,NULL,NULL),(14,27,1,NULL,NULL),(15,28,1,NULL,NULL),(16,1,2,NULL,NULL),(17,2,2,NULL,NULL),(18,4,2,NULL,NULL),(19,6,2,NULL,NULL),(20,11,2,NULL,NULL),(21,13,2,NULL,NULL),(22,14,2,NULL,NULL),(23,15,2,NULL,NULL),(24,16,2,NULL,NULL),(25,17,2,NULL,NULL),(26,20,2,NULL,NULL),(27,22,2,NULL,NULL),(28,25,2,NULL,NULL),(29,28,2,NULL,NULL),(30,30,2,NULL,NULL),(31,3,3,NULL,NULL),(32,4,3,NULL,NULL),(33,5,3,NULL,NULL),(34,6,3,NULL,NULL),(35,9,3,NULL,NULL),(36,10,3,NULL,NULL),(37,12,3,NULL,NULL),(38,14,3,NULL,NULL),(39,17,3,NULL,NULL),(40,19,3,NULL,NULL),(41,21,3,NULL,NULL),(42,23,3,NULL,NULL),(43,25,3,NULL,NULL),(44,27,3,NULL,NULL),(45,29,3,NULL,NULL),(46,3,4,NULL,NULL),(47,4,4,NULL,NULL),(48,5,4,NULL,NULL),(49,6,4,NULL,NULL),(50,7,4,NULL,NULL),(51,9,4,NULL,NULL),(52,10,4,NULL,NULL),(53,13,4,NULL,NULL),(54,14,4,NULL,NULL),(55,18,4,NULL,NULL),(56,23,4,NULL,NULL),(57,24,4,NULL,NULL),(58,25,4,NULL,NULL),(59,26,4,NULL,NULL),(60,27,4,NULL,NULL),(61,1,5,NULL,NULL),(62,2,5,NULL,NULL),(63,6,5,NULL,NULL),(64,7,5,NULL,NULL),(65,8,5,NULL,NULL),(66,13,5,NULL,NULL),(67,14,5,NULL,NULL),(68,15,5,NULL,NULL),(69,16,5,NULL,NULL),(70,18,5,NULL,NULL),(71,19,5,NULL,NULL),(72,20,5,NULL,NULL),(73,21,5,NULL,NULL),(74,26,5,NULL,NULL),(75,27,5,NULL,NULL),(76,1,6,NULL,NULL),(77,2,6,NULL,NULL),(78,3,6,NULL,NULL),(79,5,6,NULL,NULL),(80,6,6,NULL,NULL),(81,7,6,NULL,NULL),(82,8,6,NULL,NULL),(83,12,6,NULL,NULL),(84,14,6,NULL,NULL),(85,18,6,NULL,NULL),(86,20,6,NULL,NULL),(87,24,6,NULL,NULL),(88,27,6,NULL,NULL),(89,28,6,NULL,NULL),(90,30,6,NULL,NULL),(91,1,7,NULL,NULL),(92,2,7,NULL,NULL),(93,7,7,NULL,NULL),(94,8,7,NULL,NULL),(95,9,7,NULL,NULL),(96,10,7,NULL,NULL),(97,11,7,NULL,NULL),(98,13,7,NULL,NULL),(99,15,7,NULL,NULL),(100,16,7,NULL,NULL),(101,18,7,NULL,NULL),(102,21,7,NULL,NULL),(103,22,7,NULL,NULL),(104,23,7,NULL,NULL),(105,27,7,NULL,NULL),(106,1,8,NULL,NULL),(107,2,8,NULL,NULL),(108,5,8,NULL,NULL),(109,7,8,NULL,NULL),(110,11,8,NULL,NULL),(111,13,8,NULL,NULL),(112,14,8,NULL,NULL),(113,15,8,NULL,NULL),(114,17,8,NULL,NULL),(115,18,8,NULL,NULL),(116,21,8,NULL,NULL),(117,22,8,NULL,NULL),(118,23,8,NULL,NULL),(119,25,8,NULL,NULL),(120,30,8,NULL,NULL),(121,1,9,NULL,NULL),(122,3,9,NULL,NULL),(123,5,9,NULL,NULL),(124,6,9,NULL,NULL),(125,12,9,NULL,NULL),(126,13,9,NULL,NULL),(127,16,9,NULL,NULL),(128,18,9,NULL,NULL),(129,19,9,NULL,NULL),(130,20,9,NULL,NULL),(131,21,9,NULL,NULL),(132,22,9,NULL,NULL),(133,23,9,NULL,NULL),(134,26,9,NULL,NULL),(135,30,9,NULL,NULL),(136,3,10,NULL,NULL),(137,5,10,NULL,NULL),(138,7,10,NULL,NULL),(139,10,10,NULL,NULL),(140,11,10,NULL,NULL),(141,12,10,NULL,NULL),(142,15,10,NULL,NULL),(143,16,10,NULL,NULL),(144,18,10,NULL,NULL),(145,20,10,NULL,NULL),(146,21,10,NULL,NULL),(147,22,10,NULL,NULL),(148,23,10,NULL,NULL),(149,26,10,NULL,NULL),(150,27,10,NULL,NULL);
+/*!40000 ALTER TABLE `character_notable_event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `character_relatives`
+--
+
+DROP TABLE IF EXISTS `character_relatives`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `character_relatives` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `left_id` bigint(20) unsigned NOT NULL,
+  `right_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `character_relatives_left_id_foreign` (`left_id`),
+  KEY `character_relatives_right_id_foreign` (`right_id`),
+  CONSTRAINT `character_relatives_left_id_foreign` FOREIGN KEY (`left_id`) REFERENCES `characters` (`id`),
+  CONSTRAINT `character_relatives_right_id_foreign` FOREIGN KEY (`right_id`) REFERENCES `characters` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `character_relatives`
+--
+
+LOCK TABLES `character_relatives` WRITE;
+/*!40000 ALTER TABLE `character_relatives` DISABLE KEYS */;
+INSERT INTO `character_relatives` VALUES (1,1,7,NULL,NULL),(2,1,8,NULL,NULL),(3,1,9,NULL,NULL),(4,2,1,NULL,NULL),(5,2,4,NULL,NULL),(6,2,7,NULL,NULL),(7,3,5,NULL,NULL),(8,3,7,NULL,NULL),(9,3,10,NULL,NULL),(10,4,5,NULL,NULL),(11,4,6,NULL,NULL),(12,4,9,NULL,NULL),(13,5,7,NULL,NULL),(14,5,9,NULL,NULL),(15,5,10,NULL,NULL),(16,6,1,NULL,NULL),(17,6,5,NULL,NULL),(18,6,8,NULL,NULL),(19,7,2,NULL,NULL),(20,7,3,NULL,NULL),(21,7,6,NULL,NULL),(22,8,2,NULL,NULL),(23,8,6,NULL,NULL),(24,8,10,NULL,NULL),(25,9,2,NULL,NULL),(26,9,6,NULL,NULL),(27,9,8,NULL,NULL),(28,10,2,NULL,NULL),(29,10,4,NULL,NULL),(30,10,8,NULL,NULL),(31,11,12,NULL,NULL),(32,11,14,NULL,NULL),(33,11,20,NULL,NULL),(34,12,11,NULL,NULL),(35,12,14,NULL,NULL),(36,12,18,NULL,NULL),(37,13,11,NULL,NULL),(38,13,12,NULL,NULL),(39,13,18,NULL,NULL),(40,14,12,NULL,NULL),(41,14,15,NULL,NULL),(42,14,19,NULL,NULL),(43,15,11,NULL,NULL),(44,15,13,NULL,NULL),(45,15,19,NULL,NULL),(46,16,11,NULL,NULL),(47,16,13,NULL,NULL),(48,16,20,NULL,NULL),(49,17,11,NULL,NULL),(50,17,19,NULL,NULL),(51,17,20,NULL,NULL),(52,18,11,NULL,NULL),(53,18,16,NULL,NULL),(54,18,17,NULL,NULL),(55,19,12,NULL,NULL),(56,19,15,NULL,NULL),(57,19,17,NULL,NULL),(58,20,13,NULL,NULL),(59,20,15,NULL,NULL),(60,20,17,NULL,NULL),(61,21,25,NULL,NULL),(62,21,26,NULL,NULL),(63,21,27,NULL,NULL),(64,22,24,NULL,NULL),(65,22,25,NULL,NULL),(66,22,29,NULL,NULL),(67,23,21,NULL,NULL),(68,23,24,NULL,NULL),(69,23,30,NULL,NULL),(70,24,21,NULL,NULL),(71,24,22,NULL,NULL),(72,24,28,NULL,NULL),(73,25,22,NULL,NULL),(74,25,28,NULL,NULL),(75,25,30,NULL,NULL),(76,26,22,NULL,NULL),(77,26,24,NULL,NULL),(78,26,27,NULL,NULL),(79,27,22,NULL,NULL),(80,27,23,NULL,NULL),(81,27,26,NULL,NULL),(82,28,23,NULL,NULL),(83,28,26,NULL,NULL),(84,28,29,NULL,NULL),(85,29,22,NULL,NULL),(86,29,24,NULL,NULL),(87,29,28,NULL,NULL),(88,30,21,NULL,NULL),(89,30,27,NULL,NULL),(90,30,29,NULL,NULL);
+/*!40000 ALTER TABLE `character_relatives` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `character_religion`
+--
+
+DROP TABLE IF EXISTS `character_religion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `character_religion` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `character_id` bigint(20) unsigned NOT NULL,
+  `religion_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `character_religion_character_id_foreign` (`character_id`),
+  KEY `character_religion_religion_id_foreign` (`religion_id`),
+  CONSTRAINT `character_religion_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`),
+  CONSTRAINT `character_religion_religion_id_foreign` FOREIGN KEY (`religion_id`) REFERENCES `religions` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `character_religion`
+--
+
+LOCK TABLES `character_religion` WRITE;
+/*!40000 ALTER TABLE `character_religion` DISABLE KEYS */;
+INSERT INTO `character_religion` VALUES (1,1,2,NULL,NULL),(2,2,2,NULL,NULL),(3,3,5,NULL,NULL),(4,4,1,NULL,NULL),(5,5,4,NULL,NULL),(6,6,2,NULL,NULL),(7,7,1,NULL,NULL),(8,8,2,NULL,NULL),(9,9,3,NULL,NULL),(10,10,2,NULL,NULL),(11,11,4,NULL,NULL),(12,12,5,NULL,NULL),(13,13,4,NULL,NULL),(14,14,1,NULL,NULL),(15,15,4,NULL,NULL),(16,16,1,NULL,NULL),(17,17,1,NULL,NULL),(18,18,5,NULL,NULL),(19,19,3,NULL,NULL),(20,20,5,NULL,NULL),(21,21,1,NULL,NULL),(22,22,4,NULL,NULL),(23,23,3,NULL,NULL),(24,24,2,NULL,NULL),(25,25,3,NULL,NULL),(26,26,1,NULL,NULL),(27,27,5,NULL,NULL),(28,28,1,NULL,NULL),(29,29,2,NULL,NULL),(30,30,4,NULL,NULL);
+/*!40000 ALTER TABLE `character_religion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `characters`
+--
+
+DROP TABLE IF EXISTS `characters`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `characters` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `house_id` bigint(20) unsigned DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `date_of_death` date DEFAULT NULL,
+  `house_leader` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `characters_house_id_foreign` (`house_id`),
+  CONSTRAINT `characters_house_id_foreign` FOREIGN KEY (`house_id`) REFERENCES `houses` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `characters`
+--
+
+LOCK TABLES `characters` WRITE;
+/*!40000 ALTER TABLE `characters` DISABLE KEYS */;
+INSERT INTO `characters` VALUES (1,1,'Prof. Rodolfo Goodwin','2008-11-23','2015-12-09',1,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(2,1,'Edwin Cruickshank','1984-11-15','1988-01-06',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(3,1,'Dr. Jovanny Hyatt','1985-08-04','1989-06-19',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(4,1,'Peter Wolf','1996-10-21','2007-03-25',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(5,1,'Erin Roberts','1976-04-16','1978-06-27',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(6,1,'Justen Pollich','1997-04-15','2012-03-13',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(7,1,'Rubie Strosin Sr.','2005-03-19','2016-05-10',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(8,1,'Wilma Braun','1973-08-06','1975-02-06',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(9,1,'Miss Rosa Bins DDS','1993-09-16','2016-01-13',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(10,1,'Ulises Sawayn II','1987-06-20','1999-01-02',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(11,2,'Victor Farrell','1985-10-09','2012-07-04',1,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(12,2,'Rollin Grady','2001-05-20','2008-11-04',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(13,2,'Lilly Donnelly','1997-06-01','2008-04-26',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(14,2,'Shane Bartoletti IV','1976-07-15','2008-12-12',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(15,2,'Pearlie Pagac','1981-08-10','1986-04-04',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(16,2,'Concepcion Gottlieb','1986-01-14','2021-02-16',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(17,2,'Mr. Emiliano Runolfsson','1974-01-28','1978-03-17',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(18,2,'Gayle Schinner','1999-07-18','2007-09-23',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(19,2,'Matt Mitchell V','1974-10-31','1977-11-21',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(20,2,'Carroll Klein','1974-07-22','2016-04-01',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(21,3,'Delpha Pacocha','2003-10-05','2016-04-06',1,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(22,3,'Rosina Bartoletti DVM','1976-12-18','2021-05-15',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(23,3,'Maxie Lehner','1978-01-03','1999-11-27',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(24,3,'Marty Murphy','1974-02-25','1974-04-24',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(25,3,'Cierra Crist','1971-09-06','1987-03-26',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(26,3,'Liam Casper','1992-11-09','1998-05-07',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(27,3,'Madelynn Heidenreich','1980-09-21','2013-07-30',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(28,3,'Madeline Pagac','2009-12-07','2017-12-03',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(29,3,'Davon Hills IV','1971-09-09','2004-07-10',0,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(30,3,'Ms. Halie Tillman','1974-01-10','1977-04-27',0,'2021-12-19 15:16:05','2021-12-19 15:16:05');
+/*!40000 ALTER TABLE `characters` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `characters_with_religions`
+--
+
+DROP TABLE IF EXISTS `characters_with_religions`;
+/*!50001 DROP VIEW IF EXISTS `characters_with_religions`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `characters_with_religions` (
+  `char_id` tinyint NOT NULL,
+  `religion_id` tinyint NOT NULL,
+  `Character` tinyint NOT NULL,
+  `Religion` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+DROP TABLE IF EXISTS `failed_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `failed_jobs`
+--
+
+LOCK TABLES `failed_jobs` WRITE;
+/*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `houses`
+--
+
+DROP TABLE IF EXISTS `houses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `houses` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slogan` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `location_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `houses_location_id_foreign` (`location_id`),
+  CONSTRAINT `houses_location_id_foreign` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `houses`
+--
+
+LOCK TABLES `houses` WRITE;
+/*!40000 ALTER TABLE `houses` DISABLE KEYS */;
+INSERT INTO `houses` VALUES (1,'Poland','Perferendis tempora quia aliquam at et.','2021-12-19 15:16:05','2021-12-19 15:16:05',1),(2,'French Guiana','Odio inventore consequatur sed.','2021-12-19 15:16:05','2021-12-19 15:16:05',2),(3,'Barbados','Et quam rerum est sit sed.','2021-12-19 15:16:05','2021-12-19 15:16:05',3);
+/*!40000 ALTER TABLE `houses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `leaders`
+--
+
+DROP TABLE IF EXISTS `leaders`;
+/*!50001 DROP VIEW IF EXISTS `leaders`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `leaders` (
+  `char_id` tinyint NOT NULL,
+  `house_id` tinyint NOT NULL,
+  `Character` tinyint NOT NULL,
+  `House` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `location_notable_event`
+--
+
+DROP TABLE IF EXISTS `location_notable_event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `location_notable_event` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `location_id` bigint(20) unsigned NOT NULL,
+  `notable_event_id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `location_notable_event_location_id_foreign` (`location_id`),
+  KEY `location_notable_event_notable_event_id_foreign` (`notable_event_id`),
+  CONSTRAINT `location_notable_event_location_id_foreign` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`),
+  CONSTRAINT `location_notable_event_notable_event_id_foreign` FOREIGN KEY (`notable_event_id`) REFERENCES `notable_events` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `location_notable_event`
+--
+
+LOCK TABLES `location_notable_event` WRITE;
+/*!40000 ALTER TABLE `location_notable_event` DISABLE KEYS */;
+INSERT INTO `location_notable_event` VALUES (1,4,1,NULL,NULL),(2,5,2,NULL,NULL),(3,6,3,NULL,NULL),(4,7,4,NULL,NULL),(5,8,5,NULL,NULL),(6,9,6,NULL,NULL),(7,10,7,NULL,NULL),(8,11,8,NULL,NULL),(9,12,9,NULL,NULL),(10,13,10,NULL,NULL);
+/*!40000 ALTER TABLE `location_notable_event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `locations`
+--
+
+DROP TABLE IF EXISTS `locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `locations` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `longitude` double(8,2) NOT NULL,
+  `latitude` double(8,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `locations`
+--
+
+LOCK TABLES `locations` WRITE;
+/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
+INSERT INTO `locations` VALUES (1,'North Russell',-114.74,60.21,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(2,'Dayanaview',45.32,-23.00,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(3,'West Stone',100.93,-46.24,'2021-12-19 15:16:05','2021-12-19 15:16:05'),(4,'Lake Anjali',-125.33,73.68,'2021-12-19 15:16:06','2021-12-19 15:16:06'),(5,'New Drew',-62.58,-65.09,'2021-12-19 15:16:06','2021-12-19 15:16:06'),(6,'Bergstrommouth',10.06,84.38,'2021-12-19 15:16:06','2021-12-19 15:16:06'),(7,'Shirleyside',-101.13,-51.90,'2021-12-19 15:16:06','2021-12-19 15:16:06'),(8,'West Ted',32.04,-56.49,'2021-12-19 15:16:06','2021-12-19 15:16:06'),(9,'Caspermouth',-77.00,12.80,'2021-12-19 15:16:06','2021-12-19 15:16:06'),(10,'North Aminaburgh',-74.53,45.84,'2021-12-19 15:16:06','2021-12-19 15:16:06'),(11,'Roystad',68.86,-39.13,'2021-12-19 15:16:06','2021-12-19 15:16:06'),(12,'East Sophie',-85.96,18.50,'2021-12-19 15:16:06','2021-12-19 15:16:06'),(13,'Patsyville',160.21,11.52,'2021-12-19 15:16:06','2021-12-19 15:16:06');
+/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2019_12_14_000001_create_personal_access_tokens_table',1),(5,'2021_12_08_213530_create_houses_table',1),(6,'2021_12_08_214015_create_characters_table',1),(7,'2021_12_08_214244_create_locations_table',1),(8,'2021_12_09_000519_add_location_to_houses',1),(9,'2021_12_09_102400_create_religions_table',1),(10,'2021_12_15_211550_create_notable_events_table',1),(11,'2021_12_15_212305_add_locations_to_notable_events',1),(12,'2021_12_15_220315_create_relatives_table',1),(13,'2021_12_15_221112_create_friends_table',1),(14,'2021_12_17_181321_create_character_religion_table',1),(15,'2021_12_17_205504_create_table_to_store_character_titles',1),(16,'2021_12_17_232013_create_non_humans_table',1),(17,'2021_12_17_233139_create_table_for_non_human_ownership',1),(18,'2021_12_18_210639_many_to_many_character_notable_event',1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `non_humans`
+--
+
+DROP TABLE IF EXISTS `non_humans`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `non_humans` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `species` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `non_humans`
+--
+
+LOCK TABLES `non_humans` WRITE;
+/*!40000 ALTER TABLE `non_humans` DISABLE KEYS */;
+INSERT INTO `non_humans` VALUES (1,'Emerson','nihil','2021-12-19 15:16:05','2021-12-19 15:16:05'),(2,'Price','quis','2021-12-19 15:16:05','2021-12-19 15:16:05'),(3,'Shanelle','iste','2021-12-19 15:16:05','2021-12-19 15:16:05'),(4,'Berenice','dolores','2021-12-19 15:16:05','2021-12-19 15:16:05'),(5,'Herman','et','2021-12-19 15:16:05','2021-12-19 15:16:05'),(6,'Audra','ut','2021-12-19 15:16:05','2021-12-19 15:16:05'),(7,'Harmon','eum','2021-12-19 15:16:05','2021-12-19 15:16:05'),(8,'Santina','omnis','2021-12-19 15:16:05','2021-12-19 15:16:05'),(9,'Brittany','numquam','2021-12-19 15:16:05','2021-12-19 15:16:05'),(10,'Arch','distinctio','2021-12-19 15:16:05','2021-12-19 15:16:05'),(11,'Krystel','vel','2021-12-19 15:16:05','2021-12-19 15:16:05'),(12,'Ciara','et','2021-12-19 15:16:05','2021-12-19 15:16:05'),(13,'Jules','delectus','2021-12-19 15:16:05','2021-12-19 15:16:05'),(14,'Ignatius','nostrum','2021-12-19 15:16:05','2021-12-19 15:16:05'),(15,'Felicia','nihil','2021-12-19 15:16:05','2021-12-19 15:16:05'),(16,'Lindsey','iure','2021-12-19 15:16:05','2021-12-19 15:16:05'),(17,'Hector','veniam','2021-12-19 15:16:05','2021-12-19 15:16:05'),(18,'Gabrielle','ut','2021-12-19 15:16:05','2021-12-19 15:16:05'),(19,'Lavada','quia','2021-12-19 15:16:05','2021-12-19 15:16:05'),(20,'Andrew','ut','2021-12-19 15:16:05','2021-12-19 15:16:05'),(21,'Cierra','sed','2021-12-19 15:16:05','2021-12-19 15:16:05'),(22,'Jay','necessitatibus','2021-12-19 15:16:05','2021-12-19 15:16:05'),(23,'Major','voluptatem','2021-12-19 15:16:05','2021-12-19 15:16:05'),(24,'Violet','vel','2021-12-19 15:16:05','2021-12-19 15:16:05'),(25,'Jacquelyn','quibusdam','2021-12-19 15:16:05','2021-12-19 15:16:05'),(26,'Jaden','tenetur','2021-12-19 15:16:05','2021-12-19 15:16:05'),(27,'Rene','magnam','2021-12-19 15:16:05','2021-12-19 15:16:05'),(28,'Thelma','similique','2021-12-19 15:16:05','2021-12-19 15:16:05'),(29,'Sydnee','magni','2021-12-19 15:16:05','2021-12-19 15:16:05'),(30,'Kathleen','sint','2021-12-19 15:16:05','2021-12-19 15:16:05'),(31,'Nicholas','aut','2021-12-19 15:16:05','2021-12-19 15:16:05'),(32,'Edd','id','2021-12-19 15:16:05','2021-12-19 15:16:05'),(33,'Javier','sit','2021-12-19 15:16:05','2021-12-19 15:16:05'),(34,'Dovie','deserunt','2021-12-19 15:16:05','2021-12-19 15:16:05'),(35,'Dayna','inventore','2021-12-19 15:16:05','2021-12-19 15:16:05'),(36,'Ashlee','architecto','2021-12-19 15:16:05','2021-12-19 15:16:05'),(37,'Kirsten','eum','2021-12-19 15:16:05','2021-12-19 15:16:05'),(38,'Alex','occaecati','2021-12-19 15:16:05','2021-12-19 15:16:05'),(39,'Jay','distinctio','2021-12-19 15:16:05','2021-12-19 15:16:05'),(40,'Samir','natus','2021-12-19 15:16:05','2021-12-19 15:16:05'),(41,'Chester','culpa','2021-12-19 15:16:05','2021-12-19 15:16:05'),(42,'Oma','ab','2021-12-19 15:16:05','2021-12-19 15:16:05'),(43,'Milford','velit','2021-12-19 15:16:05','2021-12-19 15:16:05'),(44,'Ray','perspiciatis','2021-12-19 15:16:05','2021-12-19 15:16:05'),(45,'Jefferey','et','2021-12-19 15:16:05','2021-12-19 15:16:05'),(46,'Felipa','eveniet','2021-12-19 15:16:05','2021-12-19 15:16:05'),(47,'Leta','ex','2021-12-19 15:16:05','2021-12-19 15:16:05'),(48,'Hayden','itaque','2021-12-19 15:16:05','2021-12-19 15:16:05'),(49,'Nickolas','consequatur','2021-12-19 15:16:05','2021-12-19 15:16:05'),(50,'Dereck','est','2021-12-19 15:16:05','2021-12-19 15:16:05'),(51,'Etha','non','2021-12-19 15:16:05','2021-12-19 15:16:05'),(52,'Weldon','nisi','2021-12-19 15:16:05','2021-12-19 15:16:05'),(53,'Arvid','excepturi','2021-12-19 15:16:05','2021-12-19 15:16:05'),(54,'Carroll','ut','2021-12-19 15:16:05','2021-12-19 15:16:05'),(55,'Sylvester','quo','2021-12-19 15:16:05','2021-12-19 15:16:05'),(56,'Serena','est','2021-12-19 15:16:05','2021-12-19 15:16:05'),(57,'Nat','ad','2021-12-19 15:16:05','2021-12-19 15:16:05'),(58,'Levi','qui','2021-12-19 15:16:05','2021-12-19 15:16:05'),(59,'Aleen','dignissimos','2021-12-19 15:16:05','2021-12-19 15:16:05'),(60,'Kay','est','2021-12-19 15:16:05','2021-12-19 15:16:05'),(61,'Henriette','suscipit','2021-12-19 15:16:05','2021-12-19 15:16:05'),(62,'Annette','molestias','2021-12-19 15:16:05','2021-12-19 15:16:05'),(63,'Augustine','amet','2021-12-19 15:16:06','2021-12-19 15:16:06'),(64,'Kale','quidem','2021-12-19 15:16:06','2021-12-19 15:16:06'),(65,'Vicenta','vel','2021-12-19 15:16:06','2021-12-19 15:16:06');
+/*!40000 ALTER TABLE `non_humans` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `non_humans_with_owners`
+--
+
+DROP TABLE IF EXISTS `non_humans_with_owners`;
+/*!50001 DROP VIEW IF EXISTS `non_humans_with_owners`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `non_humans_with_owners` (
+  `id` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `species` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `notable_events`
+--
+
+DROP TABLE IF EXISTS `notable_events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `notable_events` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` enum('War','Weeding') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notable_events`
+--
+
+LOCK TABLES `notable_events` WRITE;
+/*!40000 ALTER TABLE `notable_events` DISABLE KEYS */;
+INSERT INTO `notable_events` VALUES (1,'Molestiae consequuntur molestias nobis.','Weeding','1988-08-19','Vel totam qui fugiat consequatur vel eligendi. Illum et doloremque ut ratione.','2021-12-19 15:16:06','2021-12-19 15:16:06'),(2,'Modi in vel error cupiditate.','War','1993-11-25','Atque dolor nesciunt maiores est voluptates est. Dignissimos nobis dolor labore repudiandae qui.','2021-12-19 15:16:06','2021-12-19 15:16:06'),(3,'Consectetur repellat doloremque.','War','1977-04-11','Qui dolore harum soluta amet amet amet ipsum. Rem ratione quaerat odio.','2021-12-19 15:16:06','2021-12-19 15:16:06'),(4,'Magni neque excepturi.','War','2011-07-20','Qui est exercitationem tenetur et. Ipsum delectus dignissimos et vel voluptate. Et aut ab ut atque.','2021-12-19 15:16:06','2021-12-19 15:16:06'),(5,'Et qui vitae.','Weeding','1970-05-29','Et est dolore eligendi et quasi. Earum ipsa quod tenetur nisi optio modi.','2021-12-19 15:16:06','2021-12-19 15:16:06'),(6,'Laboriosam placeat eos nemo.','War','1975-03-25','Quia voluptate illo occaecati quod. Quisquam molestiae dolorum quia sed maxime quibusdam.','2021-12-19 15:16:06','2021-12-19 15:16:06'),(7,'Id mollitia quidem dolore.','War','1995-01-23','Sunt est modi non aliquid dolore. Fuga quia eaque voluptatum sunt vitae.','2021-12-19 15:16:06','2021-12-19 15:16:06'),(8,'Officia laborum cum.','Weeding','2018-08-26','Ea ut et dolor quia in porro. Aut iusto tempora excepturi laborum.','2021-12-19 15:16:06','2021-12-19 15:16:06'),(9,'Iure omnis natus aut modi.','Weeding','1972-06-01','Dignissimos nesciunt et quo accusantium. Impedit praesentium doloribus eveniet id.','2021-12-19 15:16:06','2021-12-19 15:16:06'),(10,'Tempore voluptatibus et.','Weeding','1997-06-15','Enim quaerat molestiae dolore quo deserunt ipsa labore. Et eum aut magni. Et illum non quo.','2021-12-19 15:16:06','2021-12-19 15:16:06');
+/*!40000 ALTER TABLE `notable_events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+DROP TABLE IF EXISTS `personal_access_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `personal_access_tokens`
+--
+
+LOCK TABLES `personal_access_tokens` WRITE;
+/*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `religions`
+--
+
+DROP TABLE IF EXISTS `religions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `religions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `religions`
+--
+
+LOCK TABLES `religions` WRITE;
+/*!40000 ALTER TABLE `religions` DISABLE KEYS */;
+INSERT INTO `religions` VALUES (1,'et','2021-12-19 15:16:05','2021-12-19 15:16:05'),(2,'ut','2021-12-19 15:16:05','2021-12-19 15:16:05'),(3,'velit','2021-12-19 15:16:05','2021-12-19 15:16:05'),(4,'cum','2021-12-19 15:16:05','2021-12-19 15:16:05'),(5,'laboriosam','2021-12-19 15:16:05','2021-12-19 15:16:05');
+/*!40000 ALTER TABLE `religions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Final view structure for view `characters_with_religions`
+--
+
+/*!50001 DROP TABLE IF EXISTS `characters_with_religions`*/;
+/*!50001 DROP VIEW IF EXISTS `characters_with_religions`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `characters_with_religions` AS select `c`.`id` AS `char_id`,`r`.`id` AS `religion_id`,`c`.`name` AS `Character`,`r`.`name` AS `Religion` from ((`characters` `c` join `character_religion` `cr` on(`c`.`id` = `cr`.`character_id`)) join `religions` `r` on(`r`.`id` = `cr`.`religion_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `leaders`
+--
+
+/*!50001 DROP TABLE IF EXISTS `leaders`*/;
+/*!50001 DROP VIEW IF EXISTS `leaders`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `leaders` AS select `c`.`id` AS `char_id`,`c`.`house_id` AS `house_id`,`c`.`name` AS `Character`,`h`.`name` AS `House` from (`characters` `c` join `houses` `h` on(`c`.`house_id` = `h`.`id`)) where `c`.`house_leader` = 1 */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `non_humans_with_owners`
+--
+
+/*!50001 DROP TABLE IF EXISTS `non_humans_with_owners`*/;
+/*!50001 DROP VIEW IF EXISTS `non_humans_with_owners`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `non_humans_with_owners` AS select `nh`.`id` AS `id`,`nh`.`name` AS `name`,`nh`.`species` AS `species` from (`non_humans` `nh` join `character_non_human` `cnh` on(`nh`.`id` = `cnh`.`non_human_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-12-19 21:16:12
