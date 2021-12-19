@@ -115,6 +115,17 @@ CREATE TABLE `characters` (
   CONSTRAINT `characters_house_id_foreign` FOREIGN KEY (`house_id`) REFERENCES `houses` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `characters_with_religions`;
+/*!50001 DROP VIEW IF EXISTS `characters_with_religions`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `characters_with_religions` (
+  `char_id` tinyint NOT NULL,
+  `religion_id` tinyint NOT NULL,
+  `Character` tinyint NOT NULL,
+  `Religion` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 DROP TABLE IF EXISTS `failed_jobs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -145,6 +156,17 @@ CREATE TABLE `houses` (
   CONSTRAINT `houses_location_id_foreign` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `leaders`;
+/*!50001 DROP VIEW IF EXISTS `leaders`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `leaders` (
+  `char_id` tinyint NOT NULL,
+  `house_id` tinyint NOT NULL,
+  `Character` tinyint NOT NULL,
+  `House` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 DROP TABLE IF EXISTS `location_notable_event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -196,6 +218,16 @@ CREATE TABLE `non_humans` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `non_humans_with_owners`;
+/*!50001 DROP VIEW IF EXISTS `non_humans_with_owners`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `non_humans_with_owners` (
+  `id` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `species` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 DROP TABLE IF EXISTS `notable_events`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -265,6 +297,48 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50001 DROP TABLE IF EXISTS `characters_with_religions`*/;
+/*!50001 DROP VIEW IF EXISTS `characters_with_religions`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `characters_with_religions` AS select `c`.`id` AS `char_id`,`r`.`id` AS `religion_id`,`c`.`name` AS `Character`,`r`.`name` AS `Religion` from ((`characters` `c` join `character_religion` `cr` on(`c`.`id` = `cr`.`character_id`)) join `religions` `r` on(`r`.`id` = `cr`.`religion_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!50001 DROP TABLE IF EXISTS `leaders`*/;
+/*!50001 DROP VIEW IF EXISTS `leaders`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `leaders` AS select `c`.`id` AS `char_id`,`c`.`house_id` AS `house_id`,`c`.`name` AS `Character`,`h`.`name` AS `House` from (`characters` `c` join `houses` `h` on(`c`.`house_id` = `h`.`id`)) where `c`.`house_leader` = 1 */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!50001 DROP TABLE IF EXISTS `non_humans_with_owners`*/;
+/*!50001 DROP VIEW IF EXISTS `non_humans_with_owners`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `non_humans_with_owners` AS select `nh`.`id` AS `id`,`nh`.`name` AS `name`,`nh`.`species` AS `species` from (`non_humans` `nh` join `character_non_human` `cnh` on(`nh`.`id` = `cnh`.`non_human_id`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

@@ -121,23 +121,23 @@ COLLATE = utf8mb4_unicode_ci;
 
 
 -- -----------------------------------------------------
--- Table `gotdb`.`character_event`
+-- Table `gotdb`.`character_notable_event`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `gotdb`.`character_event` ;
+DROP TABLE IF EXISTS `gotdb`.`character_notable_event` ;
 
-CREATE TABLE IF NOT EXISTS `gotdb`.`character_event` (
+CREATE TABLE IF NOT EXISTS `gotdb`.`character_notable_event` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `character_id` BIGINT(20) UNSIGNED NOT NULL,
   `notable_event_id` BIGINT(20) UNSIGNED NOT NULL,
   `created_at` TIMESTAMP NULL DEFAULT NULL,
   `updated_at` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `character_event_character_id_foreign` (`character_id` ASC) VISIBLE,
-  INDEX `character_event_notable_event_id_foreign` (`notable_event_id` ASC) VISIBLE,
-  CONSTRAINT `character_event_character_id_foreign`
+  INDEX `character_notable_event_character_id_foreign` (`character_id` ASC) VISIBLE,
+  INDEX `character_notable_event_notable_event_id_foreign` (`notable_event_id` ASC) VISIBLE,
+  CONSTRAINT `character_notable_event_character_id_foreign`
     FOREIGN KEY (`character_id`)
     REFERENCES `gotdb`.`characters` (`id`),
-  CONSTRAINT `character_event_notable_event_id_foreign`
+  CONSTRAINT `character_notable_event_notable_event_id_foreign`
     FOREIGN KEY (`notable_event_id`)
     REFERENCES `gotdb`.`notable_events` (`id`))
 ENGINE = InnoDB
