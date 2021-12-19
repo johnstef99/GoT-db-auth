@@ -1,0 +1,204 @@
+% phpMyAdmin LaTeX Dump
+% version 5.1.1
+% https://www.phpmyadmin.net/
+%
+% Εξυπηρετητής: localhost
+% Χρόνος δημιουργίας: 19 Δεκ 2021 στις 18:42:07
+% Έκδοση διακομιστή: 10.6.5-MariaDB
+% Έκδοση PHP: 7.4.26
+% 
+% Βάση δεδομένων: 'gotdb'
+% 
+
+%
+% Δεδομένα: assigned_character_titles
+%
+\begin{longtable}{|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα assigned\_character\_titles} \label{tab:assigned_character_titles-data} \\\hline \multicolumn{1}{|c|}{\textbf{character\_id}} & \multicolumn{1}{|c|}{\textbf{title}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα assigned\_character\_titles (συνεχίζεται)}                              \\ \hline \multicolumn{1}{|c|}{\textbf{character\_id}} & \multicolumn{1}{|c|}{\textbf{title}}  \\ \hline \hline \endhead \endfoot
+	5  & Khaleesi                                                                                           \\ \hline
+	10 & LordCommander                                                                                      \\ \hline
+	15 & Khaleesi                                                                                           \\ \hline
+	20 & Khaleesi                                                                                           \\ \hline
+	25 & LordCommander                                                                                      \\ \hline
+	30 & HandOfKink                                                                                         \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: characters
+%
+\begin{longtable}{|l|l|l|l|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα characters} \label{tab:characters-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{house\_id}} & \multicolumn{1}{|c|}{\textbf{name}} & \multicolumn{1}{|c|}{\textbf{date\_of\_birth}} & \multicolumn{1}{|c|}{\textbf{date\_of\_death}} & \multicolumn{1}{|c|}{\textbf{house\_leader}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα characters (συνεχίζεται)}               \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{house\_id}} & \multicolumn{1}{|c|}{\textbf{name}} & \multicolumn{1}{|c|}{\textbf{date\_of\_birth}} & \multicolumn{1}{|c|}{\textbf{date\_of\_death}} & \multicolumn{1}{|c|}{\textbf{house\_leader}}  \\ \hline \hline \endhead \endfoot
+	1 & 1 & Prof. Rodolfo Goodwin & 2008-11-23 & 2015-12-09 & 1             \\ \hline
+	2 & 1 & Edwin Cruickshank     & 1984-11-15 & 1988-01-06 & 0             \\ \hline
+	3 & 1 & Dr. Jovanny Hyatt     & 1985-08-04 & 1989-06-19 & 0             \\ \hline
+	4 & 1 & Peter Wolf            & 1996-10-21 & 2007-03-25 & 0             \\ \hline
+	5 & 1 & Erin Roberts          & 1976-04-16 & 1978-06-27 & 0             \\ \hline
+	6 & 1 & Justen Pollich        & 1997-04-15 & 2012-03-13 & 0             \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: character_friends
+%
+\begin{longtable}{|l|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα character\_friends} \label{tab:character_friends-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{left\_id}} & \multicolumn{1}{|c|}{\textbf{right\_id}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα character\_friends (συνεχίζεται)}                      \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{left\_id}} & \multicolumn{1}{|c|}{\textbf{right\_id}}  \\ \hline \hline \endhead \endfoot
+	1 & 1 & 2                                                                              \\ \hline
+	2 & 1 & 6                                                                              \\ \hline
+	3 & 1 & 10                                                                             \\ \hline
+	4 & 2 & 1                                                                              \\ \hline
+	5 & 2 & 6                                                                              \\ \hline
+	6 & 2 & 10                                                                             \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: character_non_human
+%
+\begin{longtable}{|l|l|l|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα character\_non\_human} \label{tab:character_non_human-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{character\_id}} & \multicolumn{1}{|c|}{\textbf{non\_human\_id}} & \multicolumn{1}{|c|}{\textbf{from\_year}} & \multicolumn{1}{|c|}{\textbf{to\_year}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα character\_non\_human (συνεχίζεται)}                        \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{character\_id}} & \multicolumn{1}{|c|}{\textbf{non\_human\_id}} & \multicolumn{1}{|c|}{\textbf{from\_year}} & \multicolumn{1}{|c|}{\textbf{to\_year}}  \\ \hline \hline \endhead \endfoot
+	1 & 2  & 51 & \textit{-} & \textit{-}                                                       \\ \hline
+	2 & 4  & 52 & \textit{-} & \textit{-}                                                       \\ \hline
+	3 & 6  & 53 & \textit{-} & \textit{-}                                                       \\ \hline
+	4 & 8  & 54 & \textit{-} & \textit{-}                                                       \\ \hline
+	5 & 10 & 55 & \textit{-} & \textit{-}                                                       \\ \hline
+	6 & 12 & 56 & \textit{-} & \textit{-}                                                       \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: character_notable_event
+%
+\begin{longtable}{|l|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα character\_notable\_event} \label{tab:character_notable_event-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{character\_id}} & \multicolumn{1}{|c|}{\textbf{notable\_event\_id}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα character\_notable\_event (συνεχίζεται)}                            \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{character\_id}} & \multicolumn{1}{|c|}{\textbf{notable\_event\_id}}  \\ \hline \hline \endhead \endfoot
+	1 & 1 & 1                                                                                           \\ \hline
+	2 & 2 & 1                                                                                           \\ \hline
+	3 & 3 & 1                                                                                           \\ \hline
+	4 & 5 & 1                                                                                           \\ \hline
+	5 & 6 & 1                                                                                           \\ \hline
+	6 & 8 & 1                                                                                           \\ \hline
+	7 & 9 & 1                                                                                           \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: character_relatives
+%
+\begin{longtable}{|l|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα character\_relatives} \label{tab:character_relatives-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{left\_id}} & \multicolumn{1}{|c|}{\textbf{right\_id}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα character\_relatives (συνεχίζεται)}                        \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{left\_id}} & \multicolumn{1}{|c|}{\textbf{right\_id}}  \\ \hline \hline \endhead \endfoot
+	1 & 1 & 7                                                                                  \\ \hline
+	2 & 1 & 8                                                                                  \\ \hline
+	3 & 1 & 9                                                                                  \\ \hline
+	4 & 2 & 1                                                                                  \\ \hline
+	5 & 2 & 4                                                                                  \\ \hline
+	6 & 2 & 7                                                                                  \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: character_religion
+%
+\begin{longtable}{|l|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα character\_religion} \label{tab:character_religion-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{character\_id}} & \multicolumn{1}{|c|}{\textbf{religion\_id}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα character\_religion (συνεχίζεται)}                       \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{character\_id}} & \multicolumn{1}{|c|}{\textbf{religion\_id}}  \\ \hline \hline \endhead \endfoot
+	1 & 1 & 2                                                                                \\ \hline
+	2 & 2 & 2                                                                                \\ \hline
+	3 & 3 & 5                                                                                \\ \hline
+	4 & 4 & 1                                                                                \\ \hline
+	5 & 5 & 4                                                                                \\ \hline
+	6 & 6 & 2                                                                                \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: houses
+%
+\begin{longtable}{|l|l|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα houses} \label{tab:houses-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{name}} & \multicolumn{1}{|c|}{\textbf{slogan}}  & \multicolumn{1}{|c|}{\textbf{location\_id}} \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα houses (συνεχίζεται)}           \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{name}} & \multicolumn{1}{|c|}{\textbf{slogan}}  & \multicolumn{1}{|c|}{\textbf{location\_id}} \\ \hline \hline \endhead \endfoot
+	1 & Poland        & Perferendis tempora quia aliquam at et. & 1 \\ \hline
+	2 & French Guiana & Odio inventore consequatur sed.         & 2 \\ \hline
+	3 & Barbados      & Et quam rerum est sit sed.              & 3 \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: locations
+%
+\begin{longtable}{|l|l|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα locations} \label{tab:locations-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{name}} & \multicolumn{1}{|c|}{\textbf{longitude}} & \multicolumn{1}{|c|}{\textbf{latitude}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα locations (συνεχίζεται)}              \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{name}} & \multicolumn{1}{|c|}{\textbf{longitude}} & \multicolumn{1}{|c|}{\textbf{latitude}}  \\ \hline \hline \endhead \endfoot
+	1 & North Russell  & -114.74 & 60.21                                  \\ \hline
+	2 & Dayanaview     & 45.32   & -23.00                                 \\ \hline
+	3 & West Stone     & 100.93  & -46.24                                 \\ \hline
+	4 & Lake Anjali    & -125.33 & 73.68                                  \\ \hline
+	5 & New Drew       & -62.58  & -65.09                                 \\ \hline
+	6 & Bergstrommouth & 10.06   & 84.38                                  \\ \hline
+	7 & Shirleyside    & -101.13 & -51.90                                 \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: location_notable_event
+%
+\begin{longtable}{|l|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα location\_notable\_event} \label{tab:location_notable_event-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{location\_id}} & \multicolumn{1}{|c|}{\textbf{notable\_event\_id}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα location\_notable\_event (συνεχίζεται)}                           \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{location\_id}} & \multicolumn{1}{|c|}{\textbf{notable\_event\_id}}  \\ \hline \hline \endhead \endfoot
+	1 & 4 & 1                                                                                         \\ \hline
+	2 & 5 & 2                                                                                         \\ \hline
+	3 & 6 & 3                                                                                         \\ \hline
+	4 & 7 & 4                                                                                         \\ \hline
+	5 & 8 & 5                                                                                         \\ \hline
+	6 & 9 & 6                                                                                         \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: non_humans
+%
+\begin{longtable}{|l|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα non\_humans} \label{tab:non_humans-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{name}} & \multicolumn{1}{|c|}{\textbf{species}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα non\_humans (συνεχίζεται)}               \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{name}} & \multicolumn{1}{|c|}{\textbf{species}}  \\ \hline \hline \endhead \endfoot
+	1 & Emerson  & nihil                                                     \\ \hline
+	2 & Price    & quis                                                      \\ \hline
+	3 & Shanelle & iste                                                      \\ \hline
+	4 & Berenice & dolores                                                   \\ \hline
+	5 & Herman   & et                                                        \\ \hline
+	6 & Audra    & ut                                                        \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: notable_events
+%
+\begin{longtable}{|l|l|l|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα notable\_events} \label{tab:notable_events-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{name}} & \multicolumn{1}{|c|}{\textbf{type}} & \multicolumn{1}{|c|}{\textbf{date}} & \multicolumn{1}{|c|}{\textbf{description}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα notable\_events (συνεχίζεται)}                   \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{name}} & \multicolumn{1}{|c|}{\textbf{type}} & \multicolumn{1}{|c|}{\textbf{date}} & \multicolumn{1}{|c|}{\textbf{description}}  \\ \hline \hline \endhead \endfoot
+	1 & Molestiae conseq... & Weeding & 1988-08-19 & Vel totam qui fugiat conse...   \\ \hline
+	2 & Modi in vel erro... & War     & 1993-11-25 & Atque dolor nesciunt maior...   \\ \hline
+	3 & Consectetur repe... & War     & 1977-04-11 & Qui dolore harum soluta am...   \\ \hline
+	4 & Magni neque exce... & War     & 2011-07-20 & Qui est exercitationem ten...   \\ \hline
+	5 & Et qui vitae.   ... & Weeding & 1970-05-29 & Et est dolore eligendi et ...   \\ \hline
+	6 & Laboriosam place... & War     & 1975-03-25 & Quia voluptate illo occaec...   \\ \hline
+\end{longtable}
+
+%
+% Δεδομένα: religions
+%
+\begin{longtable}{|l|l|}
+	\hline \endhead \hline \endfoot \hline
+	\caption{Περιεχόμενο του πίνακα religions} \label{tab:religions-data} \\\hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{name}}  \\ \hline \hline  \endfirsthead
+	\caption{Περιεχόμενο του πίνακα religions (συνεχίζεται)}              \\ \hline \multicolumn{1}{|c|}{\textbf{id}} & \multicolumn{1}{|c|}{\textbf{name}}  \\ \hline \hline \endhead \endfoot
+	1 & et                                                                \\ \hline
+	2 & ut                                                                \\ \hline
+	3 & velit                                                             \\ \hline
+	4 & cum                                                               \\ \hline
+	5 & laboriosam                                                        \\ \hline
+\end{longtable}
