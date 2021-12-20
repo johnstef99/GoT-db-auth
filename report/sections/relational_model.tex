@@ -136,17 +136,15 @@
 \begin{figure}[H]
   \begin{equation}
     \begin{aligned}
-      \bm{\rho}&_{\tsub{characters\_with\_religion}} ( \\
-        & \bm{\pi}_{\tsub{c.char\_id, r.rel\_id, c.Character, r.Religion}} ( \\
-        & (\bm{\rho}_{\tsub{c}}(\texttt{characters})
-        \bowtie_{\tsub{c.id=cr.character\_id}}
-        \bm{\rho}_{\tsub{cr}}(\texttt{character\_religion})
-        ) \\
-        & \bowtie_{\tsub{r.id=cr.religon\_id}} \\
-        & \bm{\rho}_{\tsub{r}}(\texttt{religions})))
+      \bm{\rho}&_{\tsub{characters\_with\_religions}} ( \\
+               & \bm{\pi}_{\tsub{c.char\_id, r.rel\_id, c.Character, r.Religion}} ( \\
+               & \quad(\bm{\rho}_{\tsub{c}}(\texttt{characters}) \bowtie_{\tsub{c.id=cr.character\_id}} \bm{\rho}_{\tsub{cr}}(\texttt{character\_religion})) \\
+               & \quad\bowtie_{\tsub{r.id=cr.religon\_id}} \\
+               & \quad\ \bm{\rho}_{\tsub{r}}(\texttt{religions})\\
+               & ))
     \end{aligned}
   \end{equation}
-  \caption{Όψη characters\_with\_religion}
+  \caption{Όψη characters\_with\_religions}
 \end{figure}
 
 
