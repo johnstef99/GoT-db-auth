@@ -12,7 +12,22 @@
 
 \subsection{Παραδείγματα Ερωτημάτων}
 
-% TODO: fill
+Παράδειγμα θέλω να δω όλους τους \textbf{αυτούς που υπηρετούν τον Οίκο των Stark}.
+\\
+Έστω ότι το house\_id του οίκου Stark είναι 2:
+\begin{equation}
+	\bm{\pi}_{\tsub{name}}(\bm{\sigma}_{\tsub{house\_id=2}}(\text{characters}))
+\end{equation}
+
+
+Παράδειγμα θέλω να βρω \textbf{όλα τα ζώα-φυτά που είναι στην κατοχή της Arya}.
+\\
+Έστω ότι το id της Arya είναι 2:
+\begin{equation}
+	\bm{\pi}_{\tsub{name,species}}(\text{non\_humans}\bowtie_{\tsub{id=character\_id}}\bm{\sigma}_\tsub{character\_id=2}(\text{character\_non\_human}))
+\end{equation}
+
+
 
 
 \end{document}
