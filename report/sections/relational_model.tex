@@ -97,15 +97,57 @@
 % command for smaller subscripts
 \newcommand{\tsub}[1]{\texttt{\tiny#1}}
 
-Όψη που περιέχει όλους τους ηγέτες Θρησκειών.
-\begin{equation}
-	\bm{\rho}_{\tsub{LEADERS}}
-	(
-	\bm{\pi}_{\tsub{name,name}} (
-	\bm{\pi}_{\tsub{leader\_id,name}}(\texttt{religion})
-	\bowtie
-	\bm{\pi}_{\tsub{id,name}}(\texttt{character})
-	))
-\end{equation}
+\noindent
+Όψη που περιέχει όλους τους ηγέτες οίκων και τα ονόματα των οίκων
+αυτών.
+\begin{figure}[H]
+  \begin{equation}
+    \bm{\rho}_{\tsub{LEADERS}}
+    (
+    \bm{\pi}_{\tsub{c.char\_id,c.house\_id,c.Character,h.name}} (
+    \bm{\rho}_{\tsub{c(char\_id,Character)}}(\texttt{characters})
+    \bowtie_{\tsub{h.id=c.house\_id}}
+    \bm{\rho}_{\tsub{h}}(\texttt{houses})
+    ))
+  \end{equation}
+  \caption{Όψη leaders}
+\end{figure}
+
+\noindent
+Όψη που περιέχει όλα τα μην αν ανθρώπινα όντα που ανήκουν σε κάποιον
+χαρακτήρα.
+\begin{figure}[H]
+  \begin{equation}
+    \begin{aligned}
+      \bm{\rho}&_{\tsub{OWNED\_NON\_HUMANS}} ( \\
+               & \bm{\pi}_{\tsub{nh.id,nh.name,nh.species}} (
+               \bm{\rho}_{\tsub{nh}}(\texttt{non\_humans})
+               \bowtie_{\tsub{nh.id=cnh.non\_human\_id}}
+               \bm{\rho}_{\tsub{cnh}}(\texttt{character\_non\_human})
+               ))
+    \end{aligned}
+  \end{equation}
+  \caption{Όψη non\_humans\_with\_owners}
+\end{figure}
+
+\noindent
+Όψη που περιέχει τους χαρακτήρες που πιστεύουν σε κάποια θρησκεία μαζί με το
+όνομα της θρησκείας.
+\begin{figure}[H]
+  \begin{equation}
+    \begin{aligned}
+      \bm{\rho}&_{\tsub{characters\_with\_religion}} ( \\
+        & \bm{\pi}_{\tsub{c.char\_id, r.rel\_id, c.Character, r.Religion}} ( \\
+        & (\bm{\rho}_{\tsub{c}}(\texttt{characters})
+        \bowtie_{\tsub{c.id=cr.character\_id}}
+        \bm{\rho}_{\tsub{cr}}(\texttt{character\_religion})
+        ) \\
+        & \bowtie_{\tsub{r.id=cr.religon\_id}} \\
+        & \bm{\rho}_{\tsub{r}}(\texttt{religions})))
+    \end{aligned}
+  \end{equation}
+  \caption{Όψη characters\_with\_religion}
+\end{figure}
+
 
 \end{document}
