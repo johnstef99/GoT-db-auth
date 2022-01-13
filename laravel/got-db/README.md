@@ -13,7 +13,7 @@ necessary packages
 ### Run the project
 
 You need to copy the `.env.example` file to `.env` and change these fields
-according to the your database set up
+according to your database set up
 
 ```env
 DB_CONNECTION=mysql
