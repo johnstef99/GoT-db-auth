@@ -11,11 +11,14 @@ class NotableEventController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-        //
+        return view('events/events', [
+                'events' => NotableEvent::all()->sortBy('date'),
+            ]
+        );
     }
 
     /**
@@ -31,7 +34,7 @@ class NotableEventController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreNotableEventRequest  $request
+     * @param \App\Http\Requests\StoreNotableEventRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreNotableEventRequest $request)
@@ -42,18 +45,20 @@ class NotableEventController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\NotableEvent  $notableEvent
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\NotableEvent $notableEvent
+     * @return \Illuminate\View\View
      */
-    public function show(NotableEvent $notableEvent)
+    public function show(NotableEvent $event)
     {
-        //
+        return view('events/event', [
+            'event' => $event
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\NotableEvent  $notableEvent
+     * @param \App\Models\NotableEvent $notableEvent
      * @return \Illuminate\Http\Response
      */
     public function edit(NotableEvent $notableEvent)
@@ -64,8 +69,8 @@ class NotableEventController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateNotableEventRequest  $request
-     * @param  \App\Models\NotableEvent  $notableEvent
+     * @param \App\Http\Requests\UpdateNotableEventRequest $request
+     * @param \App\Models\NotableEvent $notableEvent
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateNotableEventRequest $request, NotableEvent $notableEvent)
@@ -76,7 +81,7 @@ class NotableEventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\NotableEvent  $notableEvent
+     * @param \App\Models\NotableEvent $notableEvent
      * @return \Illuminate\Http\Response
      */
     public function destroy(NotableEvent $notableEvent)

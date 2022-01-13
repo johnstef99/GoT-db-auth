@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\HouseController;
+use App\Http\Controllers\NotableEventController;
+use App\Models\Character;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/', function(){
-  return view('new');
-});
+
+Route::get('/characters', [CharacterController::class, 'index'])->name('characters');
+Route::get('/characters/{character}', [CharacterController::class, 'show'])->name('character');
+
+Route::get('/houses', [HouseController::class, 'index'])->name('houses');
+Route::get('/houses/{house}', [HouseController::class, 'show'])->name('house');
+
+Route::get('/events', [NotableEventController::class, 'index'])->name('events');
+Route::get('/events/{event}', [NotableEventController::class, 'show'])->name('event');

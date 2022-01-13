@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: GoT;
+    src: url("/fonts/got.ttf");
+}
+
+* {
+    @apply mx-auto;
+    max-width: 1200px;
+    transition: all 250ms ease-in;
+}
+
+a:hover{
+    color:white;
+}
+
+td {
+    @apply px-2;
+}
+
+table {
+    @apply rounded-lg bg-got-200;
+}
