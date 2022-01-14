@@ -39,9 +39,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                @forelse ($event->locations as $char)
-                    <tr class="hover:bg-got-300">
-                        <td><a href="/characters/{{$char->id}}"> {{$char->name}} </a></td>
+                @forelse ($event->locations as $loc)
+                    <tr class="">
+                        <td>{{$loc->name}}</td>
                     </tr>
                     </a>
                 @empty

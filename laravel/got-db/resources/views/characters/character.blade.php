@@ -78,7 +78,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($char->events as $item)
+                    @foreach($char->events->sortBy('date') as $item)
                         <tr class="hover:bg-got-300">
                             <td>
                                 <a href="/events/{{$item->id}}">
